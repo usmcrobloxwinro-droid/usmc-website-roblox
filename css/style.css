@@ -1,21 +1,12 @@
-html,
-body {
-    min-height: 100%;
-}
+/* =========================================================
+   USMC ROBLOX WEBSITE
+   MAIN STYLESHEET
+   ========================================================= */
 
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
 
-main {
-    flex: 1;
-}
-
-footer {
-    margin-top: auto;
-}
+/* =========================================================
+   RESET
+   ========================================================= */
 
 * {
     margin: 0;
@@ -26,51 +17,86 @@ footer {
 :root {
     --black: #080a08;
     --dark: #0e120f;
+    --dark-2: #101410;
     --card: #141914;
+    --card-hover: #181e18;
+
     --border: #293029;
+    --border-light: #343b34;
+
     --red: #8e1010;
     --red-light: #b51c1c;
+    --red-dark: #650909;
+
     --gold: #c6a34a;
+    --gold-light: #dec36b;
+
     --white: #f2f2ef;
+    --gray-light: #c1c5c1;
     --gray: #9da39d;
+    --gray-dark: #666c66;
 }
 
+
+/* =========================================================
+   HTML / BODY
+   ========================================================= */
+
 html {
+    min-height: 100%;
     scroll-behavior: smooth;
 }
 
 body {
-    background: var(--black);
-    color: var(--white);
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.6;
-
     min-height: 100vh;
+
     display: flex;
     flex-direction: column;
+
+    background: var(--black);
+    color: var(--white);
+
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
 }
+
+
+/* This makes the footer stay at the bottom
+   on pages with little content. */
 
 main {
     flex: 1;
 }
 
-footer {
-    margin-top: auto;
-}
-/* NAVBAR */
+
+/* =========================================================
+   HEADER
+   ========================================================= */
 
 header {
     position: sticky;
     top: 0;
     z-index: 1000;
+
     background: rgba(8, 10, 8, 0.96);
+
     border-bottom: 1px solid var(--border);
+
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
 .navbar {
+    width: 100%;
     max-width: 1400px;
+
     height: 76px;
+
     margin: auto;
     padding: 0 35px;
 
@@ -79,13 +105,21 @@ header {
     justify-content: space-between;
 }
 
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
 .brand {
     display: flex;
     align-items: center;
+
     gap: 13px;
 
     color: white;
     text-decoration: none;
+
+    flex-shrink: 0;
 }
 
 .brand-logo {
@@ -93,70 +127,120 @@ header {
     height: 43px;
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     background: var(--red);
+
     border: 1px solid #c32b2b;
+
+    color: white;
 
     font-size: 11px;
     font-weight: 900;
+
+    letter-spacing: 0.5px;
 }
 
 .brand strong {
     display: block;
+
+    color: white;
+
     font-size: 14px;
+    font-weight: 800;
+
     letter-spacing: 1px;
 }
 
 .brand span {
     display: block;
+
     color: var(--gray);
+
     font-size: 10px;
+
     letter-spacing: 2px;
 }
 
+
+/* =========================================================
+   NAVIGATION LINKS
+   ========================================================= */
+
 .nav-links {
     display: flex;
+    align-items: center;
+
     gap: 24px;
 }
 
 .nav-links a {
+    position: relative;
+
     color: #aeb3ae;
+
     text-decoration: none;
     text-transform: uppercase;
 
     font-size: 11px;
     font-weight: bold;
+
     letter-spacing: 1px;
 
-    transition: 0.2s;
+    transition: 0.2s ease;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
+.nav-links a:hover {
     color: white;
 }
 
 .nav-links a.active {
-    border-bottom: 2px solid var(--red);
-    padding-bottom: 7px;
+    color: white;
 }
+
+.nav-links a.active::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    bottom: -10px;
+
+    height: 2px;
+
+    background: var(--red);
+}
+
+
+/* =========================================================
+   MOBILE MENU BUTTON
+   ========================================================= */
 
 .menu-btn {
     display: none;
+
     background: none;
     border: none;
+
     color: white;
+
     font-size: 25px;
+
+    cursor: pointer;
 }
 
 
-/* HERO */
+/* =========================================================
+   HERO
+   ========================================================= */
 
 .hero {
-    min-height: 700px;
     position: relative;
+
+    min-height: 700px;
 
     display: flex;
     align-items: center;
@@ -164,32 +248,64 @@ header {
     padding: 80px 8%;
 
     background:
-        linear-gradient(90deg, rgba(4, 6, 4, .96), rgba(4, 6, 4, .6), rgba(4, 6, 4, .9)),
+        linear-gradient(
+            90deg,
+            rgba(4, 6, 4, 0.96),
+            rgba(4, 6, 4, 0.65),
+            rgba(4, 6, 4, 0.90)
+        ),
         url("https://images.unsplash.com/photo-1579912437766-7896df6d3cd3?auto=format&fit=crop&w=2000&q=80");
 
     background-size: cover;
     background-position: center;
 }
 
+.hero-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.1),
+            rgba(0, 0, 0, 0.35)
+        );
+
+    pointer-events: none;
+}
+
 .hero-content {
     position: relative;
-    max-width: 850px;
+
     z-index: 2;
+
+    max-width: 850px;
 }
 
 .badge-text {
+    margin-bottom: 20px;
+
     color: var(--gold);
+
     font-size: 12px;
     font-weight: bold;
+
     letter-spacing: 4px;
-    margin-bottom: 20px;
 }
 
 .hero h1 {
-    font-size: clamp(45px, 7vw, 90px);
-    line-height: .95;
-    letter-spacing: -3px;
     margin-bottom: 25px;
+
+    color: white;
+
+    font-size: clamp(45px, 7vw, 90px);
+
+    line-height: 0.95;
+
+    letter-spacing: -3px;
+
+    text-transform: uppercase;
 }
 
 .hero h1 span {
@@ -198,23 +314,32 @@ header {
 
 .hero p {
     max-width: 650px;
-    color: #c1c5c1;
-    font-size: 17px;
-    line-height: 1.8;
+
     margin-bottom: 35px;
+
+    color: var(--gray-light);
+
+    font-size: 17px;
+
+    line-height: 1.8;
 }
 
 
-/* BUTTONS */
+/* =========================================================
+   BUTTONS
+   ========================================================= */
 
 .buttons {
     display: flex;
+
     gap: 14px;
+
     flex-wrap: wrap;
 }
 
 .btn {
     display: inline-block;
+
     padding: 13px 23px;
 
     text-decoration: none;
@@ -222,187 +347,283 @@ header {
 
     font-size: 11px;
     font-weight: bold;
+
     letter-spacing: 1px;
 
-    transition: .2s;
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
 }
 
 .btn-red {
     background: var(--red);
+
+    border: 1px solid var(--red);
+
     color: white;
 }
 
 .btn-red:hover {
     background: var(--red-light);
+
+    border-color: var(--red-light);
+
     transform: translateY(-2px);
 }
 
 .btn-outline {
+    background: transparent;
+
     border: 1px solid #666;
+
     color: white;
 }
 
 .btn-outline:hover {
     border-color: var(--gold);
+
     color: var(--gold);
+
+    transform: translateY(-2px);
 }
 
 
-/* STATS */
+/* =========================================================
+   HOME STATS
+   ========================================================= */
 
 .stats {
     display: grid;
+
     grid-template-columns: repeat(4, 1fr);
 
     background: #0d100d;
+
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
 }
 
 .stat {
     padding: 30px;
+
     text-align: center;
+
     border-right: 1px solid var(--border);
+}
+
+.stat:last-child {
+    border-right: none;
 }
 
 .stat strong {
     display: block;
+
     color: var(--gold);
+
     font-size: 28px;
 }
 
 .stat span {
     color: var(--gray);
+
     font-size: 11px;
+
     text-transform: uppercase;
+
     letter-spacing: 2px;
 }
 
 
-/* GENERAL SECTIONS */
+/* =========================================================
+   GENERAL SECTIONS
+   ========================================================= */
 
 .section {
+    width: 100%;
     max-width: 1250px;
+
     margin: auto;
+
     padding: 100px 35px;
 }
 
 .section-heading {
-    text-align: center;
-    max-width: 700px;
+    max-width: 750px;
+
     margin: 0 auto 60px;
+
+    text-align: center;
 }
 
 .section-heading > span,
 .page-header > span,
 .red-label {
     color: var(--gold);
+
     font-size: 11px;
     font-weight: bold;
+
     letter-spacing: 3px;
 }
 
 .section-heading h2 {
-    font-size: 42px;
     margin: 10px 0;
+
+    color: white;
+
+    font-size: 42px;
+
+    line-height: 1.1;
 }
 
 .section-heading p {
     color: var(--gray);
+
+    font-size: 15px;
 }
 
 
-/* CARDS */
+/* =========================================================
+   HOME CARDS
+   ========================================================= */
 
 .cards {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 20px;
 }
 
 .card {
     padding: 35px;
+
     background: var(--card);
+
     border: 1px solid var(--border);
 
-    transition: .25s;
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
 }
 
 .card:hover {
-    transform: translateY(-6px);
+    background: var(--card-hover);
+
     border-color: var(--red);
+
+    transform: translateY(-6px);
 }
 
 .card-number {
     color: var(--gold);
+
     font-size: 12px;
     font-weight: bold;
 }
 
 .card h3 {
-    font-size: 24px;
     margin: 10px 0;
+
+    font-size: 24px;
 }
 
 .card p {
-    color: var(--gray);
     margin-bottom: 25px;
+
+    color: var(--gray);
 }
 
 .card a {
     color: white;
+
     text-decoration: none;
+
     font-size: 11px;
     font-weight: bold;
+
     letter-spacing: 1px;
+
+    transition: color 0.2s ease;
+}
+
+.card a:hover {
+    color: var(--gold);
 }
 
 
-/* ANNOUNCEMENT */
+/* =========================================================
+   ANNOUNCEMENT
+   ========================================================= */
 
 .announcement-section {
     padding: 80px 7%;
+
     background: #0d100d;
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 }
 
 .announcement {
     max-width: 1200px;
-    margin: auto;
 
+    margin: auto;
     padding: 40px;
 
-    border: 1px solid var(--border);
-    border-left: 4px solid var(--gold);
-
     display: flex;
+
     align-items: center;
     justify-content: space-between;
+
     gap: 30px;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-left: 4px solid var(--gold);
 }
 
 .announcement-label {
     color: var(--gold);
+
     font-size: 10px;
     font-weight: bold;
+
     letter-spacing: 3px;
 }
 
 .announcement h2 {
     margin: 8px 0;
+
+    font-size: 25px;
 }
 
 .announcement p {
+    max-width: 700px;
+
     color: var(--gray);
 }
 
 
-/* PAGE HEADER */
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
 
 .page-header {
     padding: 120px 7% 90px;
 
     background:
-        linear-gradient(rgba(5, 7, 5, .94), rgba(5, 7, 5, .97)),
+        linear-gradient(
+            rgba(5, 7, 5, 0.94),
+            rgba(5, 7, 5, 0.97)
+        ),
         url("https://images.unsplash.com/photo-1519074002996-a69e7ac46a42?auto=format&fit=crop&w=1800&q=80");
 
     background-size: cover;
@@ -412,114 +633,331 @@ header {
 }
 
 .page-header h1 {
-    font-size: clamp(45px, 7vw, 80px);
-    line-height: 1;
     margin: 12px 0;
+
+    color: white;
+
+    font-size: clamp(45px, 7vw, 80px);
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+
+    text-transform: uppercase;
 }
 
 .page-header p {
     color: var(--gray);
+
+    font-size: 15px;
 }
 
 
-/* TWO COLUMN */
+/* =========================================================
+   ABOUT PAGE
+   ========================================================= */
 
 .two-column {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 70px;
+
     align-items: start;
 }
 
 .two-column h2 {
-    font-size: 42px;
     margin: 10px 0 20px;
+
+    font-size: 42px;
+
+    line-height: 1.1;
 }
 
 .two-column p {
-    color: var(--gray);
     margin-bottom: 20px;
+
+    color: var(--gray);
+
+    line-height: 1.8;
 }
 
 
-/* INFO BOX */
+/* =========================================================
+   VALUES / INFO BOX
+   ========================================================= */
 
 .info-box {
-    background: var(--card);
-    border: 1px solid var(--border);
     padding: 35px;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
 }
 
 .info-box h3 {
     margin-bottom: 20px;
+
+    font-size: 20px;
 }
 
 .value {
     padding: 18px 0;
+
     border-top: 1px solid var(--border);
 }
 
 .value strong {
     display: block;
+
+    margin-bottom: 3px;
+
     color: var(--gold);
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
 }
 
 .value span {
     color: var(--gray);
+
+    font-size: 14px;
 }
 
 
-/* DIVISIONS */
+/* =========================================================
+   OLD DIVISION CARDS
+   ========================================================= */
 
 .division-grid {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 20px;
 }
 
 .division-card {
     min-height: 280px;
+
     padding: 35px;
 
     background: var(--card);
+
     border: 1px solid var(--border);
 
-    transition: .25s;
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
 }
 
 .division-card:hover {
-    transform: translateY(-5px);
+    background: var(--card-hover);
+
     border-color: var(--red);
+
+    transform: translateY(-5px);
 }
 
 .division-card > span {
     color: var(--gold);
+
+    font-size: 11px;
     font-weight: bold;
+
+    letter-spacing: 2px;
 }
 
 .division-card h2 {
     margin: 15px 0 2px;
+
+    font-size: 21px;
+
+    line-height: 1.2;
 }
 
 .division-card h4 {
     color: var(--gray);
+
     font-size: 10px;
+
     letter-spacing: 1px;
 }
 
 .division-card p {
-    color: #999f99;
     margin-top: 25px;
+
+    color: #999f99;
+
+    font-size: 14px;
 }
 
 
-/* RANKS */
+/* =========================================================
+   REGIMENT SECTIONS
+   ========================================================= */
+
+.regiment-section {
+    margin-bottom: 70px;
+}
+
+.regiment-section:last-child {
+    margin-bottom: 0;
+}
+
+.regiment-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    margin-bottom: 15px;
+    padding: 28px 30px;
+
+    background: var(--dark-2);
+
+    border: 1px solid var(--border);
+
+    border-left: 4px solid var(--red);
+}
+
+.regiment-number {
+    color: var(--gold);
+
+    font-size: 11px;
+    font-weight: bold;
+
+    letter-spacing: 3px;
+}
+
+.regiment-header h2 {
+    margin: 5px 0 0;
+
+    font-size: 27px;
+
+    line-height: 1.2;
+}
+
+.regiment-header p {
+    color: var(--gray);
+
+    margin-top: 3px;
+
+    font-size: 13px;
+}
+
+.regiment-location {
+    color: var(--gold);
+
+    font-size: 12px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   UNIT GRID
+   ========================================================= */
+
+.unit-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 15px;
+}
+
+.unit-card {
+    min-height: 170px;
+
+    padding: 30px;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+.unit-card:hover {
+    background: var(--card-hover);
+
+    border-color: var(--red);
+
+    transform: translateY(-4px);
+}
+
+.unit-card > span {
+    color: var(--gold);
+
+    font-size: 10px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+.unit-card h3 {
+    margin: 10px 0;
+
+    font-size: 20px;
+
+    line-height: 1.25;
+}
+
+.unit-card p {
+    color: var(--gray);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   DARK SECTION
+   ========================================================= */
+
+.dark-section {
+    max-width: none;
+
+    padding-left: 7%;
+    padding-right: 7%;
+
+    background: #0d100d;
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.dark-section .section-heading {
+    max-width: 750px;
+}
+
+
+/* =========================================================
+   RANKS
+   ========================================================= */
 
 .rank-category {
-    color: var(--gold);
-    font-size: 14px;
-    letter-spacing: 3px;
     margin: 50px 0 15px;
+
+    color: var(--gold);
+
+    font-size: 14px;
+    font-weight: bold;
+
+    letter-spacing: 3px;
 }
 
 .rank-category:first-child {
@@ -527,33 +965,62 @@ header {
 }
 
 .rank-table {
+    overflow: hidden;
+
+    background: var(--card);
+
     border: 1px solid var(--border);
 }
 
 .rank-table div {
     display: flex;
+
+    align-items: center;
     justify-content: space-between;
+
+    gap: 20px;
 
     padding: 17px 22px;
 
     background: var(--card);
+
     border-bottom: 1px solid var(--border);
+
+    transition: background 0.2s ease;
 }
 
 .rank-table div:last-child {
     border-bottom: none;
 }
 
+.rank-table div:hover {
+    background: var(--card-hover);
+}
+
+.rank-table strong {
+    color: var(--white);
+
+    font-size: 14px;
+}
+
 .rank-table span {
     color: var(--gray);
+
+    font-size: 12px;
+
+    white-space: nowrap;
 }
 
 
-/* REGULATIONS */
+/* =========================================================
+   REGULATIONS
+   ========================================================= */
 
 .regulation {
     display: grid;
+
     grid-template-columns: 70px 1fr;
+
     gap: 25px;
 
     padding: 30px 0;
@@ -561,104 +1028,285 @@ header {
     border-bottom: 1px solid var(--border);
 }
 
+.regulation:first-child {
+    padding-top: 0;
+}
+
 .regulation > span {
     color: var(--gold);
+
+    font-size: 12px;
     font-weight: bold;
+
+    letter-spacing: 2px;
 }
 
 .regulation h2 {
     margin-bottom: 8px;
+
+    font-size: 22px;
 }
 
 .regulation p {
     color: var(--gray);
+
+    font-size: 14px;
 }
 
 
-/* APPLICATIONS */
+/* =========================================================
+   APPLICATIONS
+   ========================================================= */
 
-.application-grid,
+.application-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.application-card {
+    padding: 40px;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.application-card:hover {
+    border-color: var(--red);
+
+    transform: translateY(-5px);
+}
+
+.application-card > span {
+    color: var(--gold);
+
+    font-size: 11px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+.application-card h2 {
+    margin: 15px 0;
+
+    font-size: 24px;
+}
+
+.application-card p {
+    margin-bottom: 30px;
+
+    color: var(--gray);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
 .contact-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-columns: repeat(2, 1fr);
+
     gap: 20px;
 }
 
-.application-card,
 .contact-card {
-    background: var(--card);
-    border: 1px solid var(--border);
     padding: 40px;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
 }
 
-.application-card > span,
+.contact-card:hover {
+    border-color: var(--red);
+
+    transform: translateY(-5px);
+}
+
 .contact-card > span {
     color: var(--gold);
+
+    font-size: 11px;
     font-weight: bold;
+
+    letter-spacing: 2px;
 }
 
-.application-card h2,
 .contact-card h2 {
     margin: 15px 0;
+
+    font-size: 25px;
 }
 
-.application-card p,
 .contact-card p {
-    color: var(--gray);
     margin-bottom: 30px;
+
+    color: var(--gray);
+
+    font-size: 14px;
 }
 
 
-/* CONTACT */
-
-.contact-grid {
-    grid-template-columns: repeat(2, 1fr);
-}
-
-
-/* FOOTER */
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
 footer {
+    flex-shrink: 0;
+
+    width: 100%;
+
     padding: 35px 7%;
 
-    background: #060806;
-    border-top: 1px solid var(--border);
-
     display: flex;
+
+    align-items: center;
     justify-content: space-between;
+
     gap: 20px;
 
-    color: #666c66;
+    background: #060806;
+
+    border-top: 1px solid var(--border);
+
+    color: var(--gray-dark);
+
     font-size: 12px;
 }
 
 footer strong {
     color: #c5c8c5;
+
+    font-size: 12px;
+
+    letter-spacing: 0.5px;
 }
 
 footer p {
     margin-top: 4px;
+
+    color: var(--gray-dark);
 }
 
 
-/* MOBILE */
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+    transition: color 0.2s ease;
+}
+
+
+/* =========================================================
+   SELECTION
+   ========================================================= */
+
+::selection {
+    background: var(--red);
+
+    color: white;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--black);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #303630;
+
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #454d45;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .navbar {
+        padding: 0 25px;
+    }
+
+    .nav-links {
+        gap: 16px;
+    }
+
+    .nav-links a {
+        font-size: 10px;
+    }
+
+    .hero {
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+
+    .division-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .application-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* =========================================================
+   MOBILE NAVIGATION
+   ========================================================= */
 
 @media (max-width: 900px) {
+
+    .navbar {
+        height: 70px;
+    }
 
     .nav-links {
         display: none;
 
         position: absolute;
-        top: 76px;
+
+        top: 70px;
         left: 0;
         right: 0;
 
-        padding: 20px;
+        padding: 25px;
 
-        background: #090b09;
+        background: rgba(8, 10, 8, 0.98);
+
         border-bottom: 1px solid var(--border);
 
         flex-direction: column;
+
         gap: 20px;
     }
 
@@ -666,33 +1314,59 @@ footer p {
         display: flex;
     }
 
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .nav-links a.active::after {
+        display: none;
+    }
+
     .menu-btn {
         display: block;
     }
 
-    .stats {
-        grid-template-columns: repeat(2, 1fr);
+    .two-column {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
     }
 
-    .cards,
-    .division-grid,
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .division-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .unit-grid {
+        grid-template-columns: 1fr;
+    }
+
     .application-grid {
         grid-template-columns: 1fr;
     }
 
-    .two-column,
     .contact-grid {
         grid-template-columns: 1fr;
     }
 
-    .announcement {
-        flex-direction: column;
+    .regiment-header {
         align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 12px;
     }
 }
 
 
-@media (max-width: 550px) {
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
 
     .navbar {
         padding: 0 18px;
@@ -702,27 +1376,203 @@ footer p {
         font-size: 11px;
     }
 
+    .brand span {
+        font-size: 8px;
+
+        letter-spacing: 1.5px;
+    }
+
+    .brand-logo {
+        width: 39px;
+        height: 39px;
+
+        font-size: 10px;
+    }
+
+
+    /* HERO */
+
     .hero {
+        min-height: 650px;
+
         padding: 70px 25px;
+
+        background:
+            linear-gradient(
+                rgba(4, 6, 4, 0.90),
+                rgba(4, 6, 4, 0.97)
+            ),
+            url("https://images.unsplash.com/photo-1579912437766-7896df6d3cd3?auto=format&fit=crop&w=1400&q=80");
+
+        background-size: cover;
+        background-position: center;
     }
 
     .hero h1 {
         font-size: 43px;
+
+        letter-spacing: -1.5px;
     }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+
+    /* PAGE HEADER */
+
+    .page-header {
+        padding: 85px 25px 65px;
+    }
+
+    .page-header h1 {
+        font-size: 45px;
+    }
+
+
+    /* SECTIONS */
 
     .section {
         padding: 70px 20px;
     }
 
+    .section-heading {
+        margin-bottom: 40px;
+    }
+
+    .section-heading h2 {
+        font-size: 32px;
+    }
+
+
+    /* STATS */
+
     .stats {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .stat {
         padding: 20px 10px;
+
+        border-bottom: 1px solid var(--border);
     }
 
-    footer {
+    .stat:nth-child(2) {
+        border-right: none;
+    }
+
+    .stat strong {
+        font-size: 24px;
+    }
+
+
+    /* CARDS */
+
+    .card,
+    .division-card,
+    .application-card,
+    .contact-card {
+        padding: 28px;
+    }
+
+
+    /* REGIMENT */
+
+    .regiment-header {
+        padding: 23px;
+    }
+
+    .regiment-header h2 {
+        font-size: 21px;
+    }
+
+    .unit-card {
+        padding: 25px;
+    }
+
+
+    /* RANKS */
+
+    .rank-table div {
+        padding: 15px;
+
+        gap: 15px;
+    }
+
+    .rank-table strong {
+        font-size: 13px;
+    }
+
+
+    /* REGULATIONS */
+
+    .regulation {
+        grid-template-columns: 45px 1fr;
+
+        gap: 15px;
+    }
+
+    .regulation h2 {
+        font-size: 18px;
+    }
+
+
+    /* ANNOUNCEMENT */
+
+    .announcement-section {
+        padding: 60px 20px;
+    }
+
+    .announcement {
+        padding: 28px;
+
         flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    /* FOOTER */
+
+    footer {
+        padding: 30px 20px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL SCREENS
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .page-header h1 {
+        font-size: 38px;
+    }
+
+    .buttons {
+        width: 100%;
+    }
+
+    .buttons .btn {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    .rank-table div {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 3px;
     }
 }
