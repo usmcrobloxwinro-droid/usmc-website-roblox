@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>United States Marine Corps | Roblox</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #0b0d0c;
+            color: #ffffff;
+        }
+
+        /* NAVBAR */
+        nav {
+            height: 70px;
+            background: #111512;
+            border-bottom: 1px solid #303630;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #8b0000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #d9ddd9;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: #c9a227;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            padding: 80px 7%;
+            background:
+                linear-gradient(rgba(5, 7, 6, 0.82), rgba(5, 7, 6, 0.95)),
+                url("https://images.unsplash.com/photo-1579912437766-7896df6d3cd3?auto=format&fit=crop&w=2000&q=80");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .eyebrow {
+            color: #c9a227;
+            font-weight: bold;
+            letter-spacing: 3px;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            line-height: 1.05;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            color: #a7a7a7;
+        }
+
+        .hero p {
+            color: #c4c8c4;
+            font-size: 18px;
+            line-height: 1.7;
+            max-width: 650px;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 3px;
+            transition: 0.2s;
+        }
+
+        .primary {
+            background: #8b0000;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #aa0000;
+            transform: translateY(-2px);
+        }
+
+        .secondary {
+            border: 1px solid #777;
+            color: white;
+        }
+
+        .secondary:hover {
+            border-color: #c9a227;
+            color: #c9a227;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 90px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: #8e948e;
+        }
+
+        /* ABOUT */
+        .about {
+            background: #101310;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .about-card {
+            background: #171b17;
+            padding: 35px;
+            border-left: 3px solid #8b0000;
+        }
+
+        .about-card h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .about-card p {
+            color: #aeb3ae;
+            line-height: 1.7;
+        }
+
+        /* DIVISIONS */
+        .division-grid {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .division {
+            background: #151815;
+            border: 1px solid #292e29;
+            padding: 30px;
+            transition: 0.25s;
+        }
+
+        .division:hover {
+            transform: translateY(-5px);
+            border-color: #8b0000;
+        }
+
+        .division-number {
+            color: #c9a227;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .division h3 {
+            margin: 12px 0;
+            font-size: 21px;
+        }
+
+        .division p {
+            color: #929892;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* RANKS */
+        .ranks {
+            background: #101310;
+        }
+
+        .rank-list {
+            max-width: 900px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .rank {
+            background: #171b17;
+            padding: 18px 22px;
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid #252925;
+        }
+
+        .rank span {
+            color: #8f958f;
+        }
+
+        /* ANNOUNCEMENTS */
+        .announcement {
+            max-width: 1000px;
+            margin: auto;
+            background: #151815;
+            border: 1px solid #292e29;
+            padding: 30px;
+            border-left: 4px solid #c9a227;
+        }
+
+        .announcement small {
+            color: #c9a227;
+            font-weight: bold;
+        }
+
+        .announcement h3 {
+            margin: 10px 0;
+        }
+
+        .announcement p {
+            color: #aeb3ae;
+            line-height: 1.6;
+        }
+
+        /* CTA */
+        .cta {
+            text-align: center;
+            background:
+                linear-gradient(rgba(90, 0, 0, 0.25), rgba(90, 0, 0, 0.25)),
+                #0b0d0c;
+        }
+
+        .cta h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #aeb3ae;
+            margin-bottom: 30px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #080a08;
+            border-top: 1px solid #242824;
+            padding: 35px 7%;
+            display: flex;
+            justify-content: space-between;
+            color: #727872;
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: #c9c9c9;
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 0 5%;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .division-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .rank-list {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">
+            <div class="logo-icon">USMC</div>
+            <span>UNITED STATES MARINE CORPS</span>
+        </div>
+
+        <ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#divisions">DIVISIONS</a></li>
+            <li><a href="#ranks">RANKS</a></li>
+            <li><a href="#news">NEWS</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                ROBLOX MILITARY COMMUNITY
+            </div>
+
+            <h1>
+                UNITED STATES<br>
+                <span>MARINE CORPS</span>
+            </h1>
+
+            <p>
+                Welcome to the United States Marine Corps Roblox
+                community. Train, serve, and take part in a structured
+                military experience built around discipline, teamwork,
+                and honor.
+            </p>
+
+            <div class="buttons">
+                <!-- CHANGE THESE LINKS -->
+                <a class="button primary"
+                   href="https://www.roblox.com/"
+                   target="_blank">
+                    PLAY ON ROBLOX
+                </a>
+
+                <a class="button secondary"
+                   href="https://discord.com/"
+                   target="_blank">
+                    JOIN DISCORD
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+
+        <div class="section-title">
+            <h2>About Us</h2>
+            <p>One Corps. One Community. One Mission.</p>
+        </div>
+
+        <div class="about-grid">
+
+            <div class="about-card">
+                <h3>Our Mission</h3>
+                <p>
+                    Our mission is to provide an organized and immersive
+                    Roblox Marine Corps experience where members can
+                    participate in training, operations, leadership,
+                    and community events.
+                </p>
+            </div>
+
+            <div class="about-card">
+                <h3>Our Values</h3>
+                <p>
+                    Discipline, integrity, teamwork, leadership,
+                    professionalism, and commitment form the foundation
+                    of our community.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- DIVISIONS -->
+    <section id="divisions">
+
+        <div class="section-title">
+            <h2>Divisions</h2>
+            <p>Explore the commands within our organization.</p>
+        </div>
+
+        <div class="division-grid">
+
+            <div class="division">
+                <div class="division-number">01</div>
+                <h3>TECOM</h3>
+                <p>
+                    Training and Education Command responsible for
+                    developing Marines through structured training.
+                </p>
+            </div>
+
+            <div class="division">
+                <div class="division-number">02</div>
+                <h3>1st Marine Division</h3>
+                <p>
+                    Ground combat command responsible for operational
+                    missions and field activities.
+                </p>
+            </div>
+
+            <div class="division">
+                <div class="division-number">03</div>
+                <h3>2nd Marine Division</h3>
+                <p>
+                    A combat-focused division supporting operations,
+                    exercises, and community events.
+                </p>
+            </div>
+
+            <div class="division">
+                <div class="division-number">04</div>
+                <h3>3rd Marine Aircraft Wing</h3>
+                <p>
+                    Aviation command focused on air operations,
+                    aviation training, and support.
+                </p>
+            </div>
+
+            <div class="division">
+                <div class="division-number">05</div>
+                <h3>Military Police</h3>
+                <p>
+                    Responsible for maintaining order, enforcing
+                    community regulations, and supporting security.
+                </p>
+            </div>
+
+            <div class="division">
+                <div class="division-number">06</div>
+                <h3>MARSOC</h3>
+                <p>
+                    Specialized command focused on advanced training
+                    and specialized operations.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- RANKS -->
+    <section class="ranks" id="ranks">
+
+        <div class="section-title">
+            <h2>Rank Structure</h2>
+            <p>Our organizational hierarchy.</p>
+        </div>
+
+        <div class="rank-list">
+
+            <div class="rank">
+                <strong>Private</strong>
+                <span>PVT</span>
+            </div>
+
+            <div class="rank">
+                <strong>Private First Class</strong>
+                <span>PFC</span>
+            </div>
+
+            <div class="rank">
+                <strong>Lance Corporal</strong>
+                <span>LCpl</span>
+            </div>
+
+            <div class="rank">
+                <strong>Corporal</strong>
+                <span>Cpl</span>
+            </div>
+
+            <div class="rank">
+                <strong>Sergeant</strong>
+                <span>Sgt</span>
+            </div>
+
+            <div class="rank">
+                <strong>Staff Sergeant</strong>
+                <span>SSgt</span>
+            </div>
+
+            <div class="rank">
+                <strong>Gunnery Sergeant</strong>
+                <span>GySgt</span>
+            </div>
+
+            <div class="rank">
+                <strong>Sergeant Major</strong>
+                <span>SgtMaj</span>
+            </div>
+
+            <div class="rank">
+                <strong>Second Lieutenant</strong>
+                <span>2ndLt</span>
+            </div>
+
+            <div class="rank">
+                <strong>First Lieutenant</strong>
+                <span>1stLt</span>
+            </div>
+
+            <div class="rank">
+                <strong>Captain</strong>
+                <span>Capt</span>
+            </div>
+
+            <div class="rank">
+                <strong>Major</strong>
+                <span>Maj</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- NEWS -->
+    <section id="news">
+
+        <div class="section-title">
+            <h2>Latest Announcement</h2>
+            <p>Stay up to date with the Corps.</p>
+        </div>
+
+        <div class="announcement">
+
+            <small>ANNOUNCEMENT • AUGUST 2026</small>
+
+            <h3>Welcome to the United States Marine Corps</h3>
+
+            <p>
+                Our Roblox community is currently expanding.
+                New members are encouraged to join our Discord,
+                attend training sessions, and participate in
+                upcoming events.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="cta">
+
+        <h2>READY TO SERVE?</h2>
+
+        <p>
+            Join the community and begin your journey today.
+        </p>
+
+        <div class="buttons">
+
+            <a class="button primary"
+               href="https://www.roblox.com/"
+               target="_blank">
+                JOIN ROBLOX
+            </a>
+
+            <a class="button secondary"
+               href="https://discord.com/"
+               target="_blank">
+                DISCORD
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div>
+            <strong>UNITED STATES MARINE CORPS</strong>
+            <br>
+            Roblox Community
+        </div>
+
+        <div>
+            © 2026 USMC Roblox Community
+        </div>
+
+    </footer>
+
+</body>
+</html>
